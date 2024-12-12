@@ -1,2 +1,4 @@
 a.out
 *.swp
+ts-parser
+elephant.ts
