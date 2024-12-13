@@ -1,5 +1,12 @@
-TS Parser
+# TS Parser
 
+## Problem Statement
 Input file: http://test.unified-streaming.com/elephants.ts
 
 writes the audio and video as two separate files to disk (raw/elementary AAC and raw/elementary AVC1)
+
+## Tasks
+* [ ] Parse PAT
+* [ ] Parse PMT
+* [ ] Get video/audio PIDs
+* [ ] Dump video/audio raw payload into file
