@@ -1,0 +1,5 @@
+TS Parser
+
+Input file: http://test.unified-streaming.com/elephants.ts
+
+writes the audio and video as two separate files to disk (raw/elementary AAC and raw/elementary AVC1)
