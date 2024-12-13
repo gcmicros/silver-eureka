@@ -7,6 +7,7 @@
 #include "../lib/transport-stream-packet.h"
 #include "../lib/program-association-table.h"
 #include "../lib/program-mapping-table.h"
+#include "../lib/payload-file-writer.h"
 
 
 int main() {
@@ -15,6 +16,8 @@ int main() {
     
     bool foundPAT = false;
     bool foundPMT = false;
+    unsigned int video_pid; 
+    unsigned int audio_pid;
     std::map<unsigned int, bool> found_pmts;
     std::vector<unsigned char>::iterator it = data.begin();
 
@@ -45,6 +48,17 @@ int main() {
             found_pmts[PID] = true;
             ProgramMappingTable PMT(packet.getPUSI());
             PMT.parse(start+4);
+            continue;
+        }
+
+
+        if (PID == video_pid) {
+
+            continue;
+        }
+
+        if (PID == audio_pid) {
+
             continue;
         }
 
