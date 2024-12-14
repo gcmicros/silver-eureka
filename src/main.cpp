@@ -17,6 +17,8 @@ int main() {
     bool foundPAT = false;
     bool foundPMT = false;
     unsigned int video_pid; 
+    PayloadFileWriter video_file("raw_video.dump");
+    PayloadFileWriter audio_file("raw_audio.dump");
     unsigned int audio_pid;
     std::map<unsigned int, bool> found_pmts;
     std::vector<unsigned char>::iterator it = data.begin();
