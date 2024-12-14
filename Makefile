@@ -9,7 +9,7 @@ SRC=$(SRC_DIR)/main.cpp\
 	$(SRC_DIR)/program-mapping-table.cpp
 
 main: $(BUILD_DIR) 
-	g++ $(SRC) -o $(BUILD_DIR)/ts-parser
+	g++ -std=c++17 $(SRC) -o $(BUILD_DIR)/ts-parser
 
 $(BUILD_DIR):
 	mkdir $(BUILD_DIR)
