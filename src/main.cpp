@@ -44,7 +44,6 @@ int main() {
             for (auto it = programs.begin(); it != programs.end(); it++){
                 found_pmts.insert({it->second, false});        
             }
-            continue;
         }
 
         const auto foundPMT = found_pmts.find(PID);
@@ -54,18 +53,15 @@ int main() {
             found_pmts[PID] = true;
             ProgramMappingTable PMT(packet.getPUSI());
             PMT.parse(start+4);
-            continue;
         }
 
 
         if (PID == video_pid) {
 
-            continue;
         }
 
         if (PID == audio_pid) {
 
-            continue;
         }
 
         // jump to end of this packet
