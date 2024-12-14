@@ -1,4 +1,5 @@
 #include <algorithm>
+#include <chrono>
 #include <fstream>
 #include <iostream>
 #include <iterator>
@@ -9,10 +10,13 @@
 #include "../lib/program-mapping-table.h"
 #include "../lib/payload-file-writer.h"
 
+using namespace std::chrono;
 
 int main() {
+    auto start = high_resolution_clock::now();
     std::ifstream input("elephant.ts", std::ios::binary);
     std::vector<unsigned char> data(std::istreambuf_iterator<char>(input), {});
+    std::cout << "read: " << duration_cast<milliseconds>(high_resolution_clock::now() - start).count() << std::endl;
     
     bool foundPAT = false;
     bool foundPMT = false;
