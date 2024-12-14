@@ -1,6 +1,8 @@
+#include <fstream>
 #include <string>
 
 class PayloadFileWriter {
+    std::fstream output_file;
     public:
         PayloadFileWriter(std::string filename);
         ~PayloadFileWriter();
