@@ -5,6 +5,8 @@
 
 class TSPacket {
     const int MAX_PAYLOAD_BYTES = 184;
+    const unsigned char* start;
+    int payload_size = MAX_PAYLOAD_BYTES;
     bool transport_error_indicator;
     bool payload_unit_start_indicator;
     bool transport_priority;
@@ -25,4 +27,8 @@ class TSPacket {
         unsigned int getPID();
 
         bool getPUSI();
+
+        unsigned int getPayloadSize();
+
+        const unsigned char* const getPayloadStart();
 };

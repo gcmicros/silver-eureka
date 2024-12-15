@@ -13,7 +13,7 @@ ProgramAssociationTable::ProgramAssociationTable(bool payloadUnitStartIndicator)
 void ProgramAssociationTable::parse(const unsigned char* const start) {
  
     ProgramSpecificInformation::parse(start);
-    ProgramSpecificInformation::print();
+    //ProgramSpecificInformation::print();
     const auto payload_start = ProgramSpecificInformation::getPayloadStart();
     for(int i = 0; i < getPayloadLength() ; i+=4) {
         const auto program_num = payload_start[i] << 8 | payload_start[i+1];

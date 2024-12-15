@@ -18,6 +18,7 @@ void PES::parse(){
     const int pes_header_length = start[index+4];
     std::cout << std::dec << "packet header length " <<  pes_header_length << std::endl;
 
+    // NOTE(gmicros): +5 was the bug
     this->packet_length =  index + 5 + pes_header_length;
     this->start = start + index + 5 + pes_header_length;
 }
