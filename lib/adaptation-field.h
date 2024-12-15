@@ -1,5 +1,6 @@
 class AdaptationField {
-    unsigned int adaptation_field_length;
+    // NOTE(gmicros): uninitilized var was bug
+    unsigned int adaptation_field_length = 0;
     unsigned char discontinuity_indicator;
     unsigned char random_access_indicator;
     unsigned char elementary_stream_priority_indicator;
