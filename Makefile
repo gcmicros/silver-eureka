@@ -11,7 +11,7 @@ SRC=$(SRC_DIR)/main.cpp\
 	$(SRC_DIR)/payload-file-writer.cpp\
 	$(SRC_DIR)/program-mapping-table.cpp
 
-main: $(BUILD_DIR) 
+all: $(BUILD_DIR) 
 	g++ -std=c++17 $(SRC) -o $(BUILD_DIR)/ts-parser
 
 $(BUILD_DIR):
@@ -45,7 +45,7 @@ compare: compare-video compare-audio
 
 test: run compare
 
-run: download-file
+run: download-file all
 	build/ts-parser $(INPUT_FILE)
 
 clean: 
