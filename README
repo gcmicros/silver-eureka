@@ -1,5 +1,10 @@
 # TS Parser
 
+## How to run
+`make`  : build
+`make run`: build, download test file and run program
+`make compare`: run program and compare result to ffmpeg dump
+
 ## Problem Statement
 Input file: http://test.unified-streaming.com/elephants.ts
 
