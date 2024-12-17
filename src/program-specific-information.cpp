@@ -8,13 +8,15 @@ ProgramSpecificInformation::ProgramSpecificInformation(bool payloadUnitStartIndi
 
 int ProgramSpecificInformation::getPayloadLength() {
     return this->section_length
-        - 5     // other section field
+        - 5     // table syntax section 
         - 4;    // CRC
 }
 
 const unsigned char *const ProgramSpecificInformation::getPayloadStart() {
     return this->psi_start + this->offset
-        + 9; // section stuff
+        + 1     // pointer field
+        + 3     // table header
+        + 5;    // table syntax section
 }
 
 void ProgramSpecificInformation::parse(const unsigned char *const start) {
