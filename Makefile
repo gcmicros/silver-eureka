@@ -1,6 +1,8 @@
 BUILD_DIR=./build
 SRC_DIR=./src
 
+INPUT_FILE=elephant.ts
+
 SRC=$(SRC_DIR)/main.cpp\
 	$(SRC_DIR)/transport-stream-packet.cpp\
 	$(SRC_DIR)/program-specific-information.cpp\
@@ -20,10 +22,8 @@ $(BUILD_DIR):
         download-file
 
 download-file:
-	@if [ -f elephant.ts ]; then \
-		echo "elephant.ts already exists."; \
-	else \
-		curl "http://test.unified-streaming.com/elephants.ts" --output elephant.ts; \
+	@if [ ! -f $(INPUT_FILE) ]; then \
+		curl "http://test.unified-streaming.com/elephants.ts" --output $(INPUT_FILE); \
 	fi
 
 ffmpeg-video-extract:
@@ -46,7 +46,7 @@ compare: compare-video compare-audio
 test: run compare
 
 run: download-file
-	build/ts-parser
+	build/ts-parser $(INPUT_FILE)
 
 clean: 
 	rm -rf $(BUILD_DIR)

@@ -1,4 +1,6 @@
 #include <algorithm>
+#include <chrono>
+#include <filesystem>
 #include <fstream>
 #include <iostream>
 #include <iterator>
@@ -12,8 +14,19 @@
 
 using namespace std::chrono;
 
-int main() {
-    std::ifstream input("elephant.ts", std::ios::binary);
+int main(int argc, char* argv[]) {
+    // Check if the filename was provided
+    if (argc < 2) {
+        std::cerr << "Usage: " << argv[0] << " <filename>\n";
+        return 1;
+    }
+
+    std::string filename = argv[1];
+    if (!std::filesystem::exists(filename)) {
+        std::cerr << "File [" << filename << "] does not exist" << std::endl;
+    }
+
+    std::ifstream input(filename, std::ios::binary);
     std::vector<unsigned char> data(std::istreambuf_iterator<char>(input), {});
     
     bool foundPAT = false;
