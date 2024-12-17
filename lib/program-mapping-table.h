@@ -8,6 +8,7 @@
 #include <map>
 
 class ProgramMappingTable : ProgramSpecificInformation {
+    // PID -> Elementary Stream Type
     std::map<unsigned int, unsigned int> PID_to_es_type;
     public:
         ProgramMappingTable(bool payloadUnitStartIndicator);
