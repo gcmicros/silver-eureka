@@ -5,15 +5,15 @@
 
 class TSPacket {
     const int MAX_PAYLOAD_BYTES = 184;
-    const unsigned char* start;
+    const unsigned char* start = nullptr;
     int payload_size = MAX_PAYLOAD_BYTES;
-    bool transport_error_indicator;
-    bool payload_unit_start_indicator;
-    bool transport_priority;
+    bool transport_error_indicator = false;
+    bool payload_unit_start_indicator = false;
+    bool transport_priority = false;
     unsigned int PID;
-    unsigned int transport_scrambling_control;
-    unsigned int adaptation_field_control;
-    unsigned int continuity_counter;
+    unsigned int transport_scrambling_control = 0;
+    unsigned int adaptation_field_control = 0;
+    unsigned int continuity_counter = 0;
     AdaptationField adaptation_field;
     std::vector<char> payload;        
 
