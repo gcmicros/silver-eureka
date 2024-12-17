@@ -1,14 +1,12 @@
 #include <iostream>
 #include <stdexcept>
 
-//#include "program-association-table.h"
-//#include "program-specific-information.h"
 #include "../lib/transport-stream-packet.h" 
 
 const unsigned char* const TSPacket::getPayloadStart() {
-    const unsigned int offset = this->adaptation_field.getLength() > 0 ? 1 : 0;
-    return start + 4 + this->adaptation_field.getLength() + offset;
-
+    return start 
+        + 4  // skip TS header
+        + this->adaptation_field.getLength(); // skip adaptation field
 }
 unsigned int TSPacket::getPayloadSize() {
     return this->payload_size;
@@ -39,7 +37,7 @@ void TSPacket::parsePacket(const unsigned char *const packetStart) {
         // adaption field is present
         // TODO: calculate new payload size 
         this->adaptation_field.parse(packetStart+ 4);
-        this->payload_size -= (this->adaptation_field.getLength() + 1);
+        this->payload_size -= this->adaptation_field.getLength();
     }
 
     if (this->adaptation_field_control == 0b01 || this->adaptation_field_control == 0b11) {
@@ -64,4 +62,3 @@ void TSPacket::print() {
         std::dec << "Adaptation Field Control " << this->adaptation_field_control << std::endl <<
         "Continuity Counter " << this->continuity_counter << std::endl << std::endl;
 }
-
