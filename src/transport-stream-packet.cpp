@@ -19,6 +19,7 @@ bool TSPacket::getPUSI() {
 unsigned int TSPacket::getPID() {
     return this->PID;
 }
+
 void TSPacket::parsePacket(const unsigned char *const packetStart) {
     if (packetStart[0] != 0x47) {
         throw std::runtime_error("Sync byte missing");
@@ -31,7 +32,6 @@ void TSPacket::parsePacket(const unsigned char *const packetStart) {
     this->transport_scrambling_control = (packetStart[3] & 0xc0) >> 6;
     this->adaptation_field_control = (packetStart[3] & 0x30) >> 4;
     this->continuity_counter = packetStart[3] & 0x0F;
-
 
     if (this->adaptation_field_control == 0b10 || this->adaptation_field_control == 0b11) {
         // adaption field is present

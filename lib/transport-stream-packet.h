@@ -2,7 +2,6 @@
 
 #include "adaptation-field.h"
 
-
 class TSPacket {
     const int MAX_PAYLOAD_BYTES = 184;
     const unsigned char* start = nullptr;
