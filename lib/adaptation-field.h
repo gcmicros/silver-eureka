@@ -12,8 +12,8 @@ class AdaptationField {
     
     public:
         void parse(const unsigned char *const adaptationFieldStart) {
-            this->adaptation_field_length = (unsigned int)adaptationFieldStart[0]; 
-            this->adaptation_field_length += 1; // <- 1 byte store the length value
+            this->adaptation_field_length = (unsigned int)adaptationFieldStart[0]
+                + 1; // <- 1 byte store the length value
         }
 
         unsigned int getLength() {
